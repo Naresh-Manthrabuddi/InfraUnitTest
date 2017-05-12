@@ -1,0 +1,42 @@
+#Check if ssh service is running or not
+describe service('ssh') do
+  it { should be_running }
+end
+
+#Check if port 8080 is open or not
+describe port(8080) do
+  it { should be_listening }
+end
+
+#Check if service tomcat8 is installed,enabled and running
+  describe service('tomcat8') do
+  it { should be_enabled }
+  it { should be_running }
+  end
+  
+#Check if the TestRestWebservice.war file exists  
+describe file('/var/lib/tomcat8/webapps/TestRestWebservice.war') do
+  it { should exist }
+end
+
+#Check if the user exist
+describe user('root') do
+  it { should exist }
+end
+
+
+#Check if the OS is ubuntu
+describe os[:family] do
+  it { should eq 'ubuntu' }
+end
+
+#Check if the package tomcat8 is installed
+describe package('tomcat8') do
+  it { should be_installed }
+end
+
+#Check if it is a directory
+
+describe file('/var') do
+  it { should be_directory }
+end
